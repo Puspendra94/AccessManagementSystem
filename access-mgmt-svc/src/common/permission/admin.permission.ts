@@ -1,0 +1,17 @@
+export const ADMIN_PERMISSION = [
+    'all:users',
+    'create:users',
+    'read:users',
+    'update:users',
+    'delete:users',
+    'all:roles',
+    'create:roles',
+    'read:roles',
+    'update:roles',
+    'delete:roles', 
+    'all:permissions',
+    'create:permissions',
+    'read:permissions',
+    'update:permissions',
+    'delete:permissions',
+];
