@@ -1,34 +1,26 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { UserService } from './user.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { KeyService } from '../key/key.service';
+import { UpdateKeyDto } from '../key/dto/update-key.dto';
 
-@Controller('user')
+@Controller({
+  path: 'user',
+  version: '1',
+})
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(private readonly keyService: KeyService) {}
 
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
+  @Get('key/:key')
+  findOne(@Param('key') key: string) {
+    return this.keyService.findOne(key)
   }
 
-  @Get()
-  findAll() {
-    return this.userService.findAll();
+  @Patch('key/:key')
+  update(@Param('key') key: string, @Body() updateKeyDto: UpdateKeyDto) {
+    return this.keyService.update(key, updateKeyDto);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.userService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.userService.update(+id, updateUserDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.userService.remove(+id);
+  @Delete('key/:key')
+  remove(@Param('key') key: string) {
+    return this.keyService.softDelete(key);
   }
 }
