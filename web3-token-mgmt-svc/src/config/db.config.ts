@@ -19,7 +19,7 @@ const config: Record<string, PostgresConnectionOptions> = {
       password: process.env.DB_PASSWORD,
       port: parseInt(process.env.DB_PORT),
       synchronize: true,
-      logging: true, // for production 'false',
+      logging: false, // for production 'false',
       type: 'postgres',
       username: process.env.DB_USER,
       migrations: [__dirname + '/../migrations/*{.ts,.js}'], // for production 'dist/migrations/*{.ts,.js}', 
