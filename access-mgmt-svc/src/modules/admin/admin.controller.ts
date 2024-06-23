@@ -4,6 +4,7 @@ import { KeyService } from '../key/key.service';
 import { CreateKeyDto } from '../key/dto/create-key.dto';
 import { UpdateKeyDto } from '../key/dto/update-key.dto';
 
+
 @Controller({
   path: 'admin',
   version: '1',
@@ -15,8 +16,8 @@ export class AdminController {
   ) {}
 
   @Get('/access-token')
-  getAdminToken() {
-    return this.adminService.getAdminToken();
+  async getAdminToken() {
+    return await this.adminService.getAdminToken();
   }
 
   @Post('/key')

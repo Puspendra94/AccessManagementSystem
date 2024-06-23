@@ -1,5 +1,5 @@
 import { IsDefined, IsInt, IsPositive, IsString } from "class-validator";
-import { AbstractDto } from "src/common/dto/abstract.dto";
+import { AbstractDto } from "../../../../src/common/dto/abstract.dto";
 import { KeyEntity } from "../entities/key.entity";
 
 export class KeyDto extends AbstractDto {
@@ -10,7 +10,7 @@ export class KeyDto extends AbstractDto {
     @IsDefined()
     @IsInt()
     @IsPositive()
-    public expiryInMs: number;
+    public limit: number;
 
     @IsDefined()
     @IsInt()
@@ -20,7 +20,7 @@ export class KeyDto extends AbstractDto {
     constructor(keyEntity: KeyEntity) {
         super();
         this.key = keyEntity.key;
-        this.expiryInMs = keyEntity.expiryInMs;
+        this.limit = keyEntity.limit;
         this.ttl = keyEntity.ttl;
     }
 }
