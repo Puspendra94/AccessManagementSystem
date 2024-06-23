@@ -5,6 +5,7 @@ import { TokenModule } from './modules/token/token.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import rdbmsConfig from './config/db.config';
 import { ConfigModule } from '@nestjs/config';
+import { SharedModule } from './shared/shared.module';
 
 @Module({
   imports: [
@@ -13,7 +14,8 @@ import { ConfigModule } from '@nestjs/config';
       envFilePath: '.env',
     }),
     TypeOrmModule.forRoot(rdbmsConfig),
-    TokenModule
+    TokenModule,
+    SharedModule
   ],
   controllers: [AppController],
   providers: [AppService],

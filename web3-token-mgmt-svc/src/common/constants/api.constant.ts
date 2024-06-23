@@ -1,0 +1,1 @@
+export const TOKEN_INFO_MOCK_URL = `https://jsonplaceholder.typicode.com/todos/:id`;
